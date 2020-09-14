@@ -3,6 +3,7 @@ package com.averveyko.demo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
@@ -21,6 +22,10 @@ public class DemoApplication implements CommandLineRunner, ApplicationRunner {
     @Autowired
     private String info;
 
+    // Пример чтения проперти из application.properties
+    @Value("${demo.property}")
+    private String demoProperty;
+
     public static void main(String[] args) {
 
         new SpringApplicationBuilder(DemoApplication.class)
@@ -33,6 +38,7 @@ public class DemoApplication implements CommandLineRunner, ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         logger.info("## > ApplicationRunner Implementation...");
         logger.info("Accessing the Info bean: " + info);
+        logger.info("### demoProperty value: " + demoProperty);
         args.getNonOptionArgs().forEach(file -> logger.info(file));
     }
 
