@@ -23,8 +23,16 @@ public class DemoApplication implements CommandLineRunner, ApplicationRunner {
     private String info;
 
     // Пример чтения проперти из application.properties
+    // Аналогично можно указать из коммандной строки (что является более приоритетным)
+    // $ java -jar target/myapp.jar --demo.property=value
     @Value("${demo.property}")
     private String demoProperty;
+
+    // Пример чтения проперти взависимости от включенного профиля (spring.profiles.active в application.properties)
+    // будет произведено чтение из application-<profile-name>.properties
+    // либо так: $ ./mvnw clean spring-boot:run -Dspring.profiles.active=prod
+    @Value("${server.ip}")
+    private String profileProperty;
 
     public static void main(String[] args) {
 
@@ -38,7 +46,6 @@ public class DemoApplication implements CommandLineRunner, ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         logger.info("## > ApplicationRunner Implementation...");
         logger.info("Accessing the Info bean: " + info);
-        logger.info("### demoProperty value: " + demoProperty);
         args.getNonOptionArgs().forEach(file -> logger.info(file));
     }
 
@@ -63,6 +70,8 @@ public class DemoApplication implements CommandLineRunner, ApplicationRunner {
         return args -> {
             logger.info("## > CommandLineRunner  Implementation... (@Bean)");
             logger.info("Accessing the Info bean: " + info);
+            logger.info("### demoProperty value: " + demoProperty);
+            logger.info("### profileProperty value: " + profileProperty);
             for(String arg:args)
                 logger.info(arg);
         };
