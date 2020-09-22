@@ -1,1 +1,13 @@
-Проекты из книги "Spring Boot 2: лучшие практики для профессионалов"
+п»ї# РџСЂРѕРµРєС‚С‹ РёР· РєРЅРёРіРё "Spring Boot 2: Р»СѓС‡С€РёРµ РїСЂР°РєС‚РёРєРё РґР»СЏ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»РѕРІ"
+
+### create todo
+curl -i -X POST http://localhost:8080/api/todo -H "Content-Type: application/json" -d "{\"description\":\"my descrpition\"}"
+
+### edit todo
+curl -i -X PUT http://localhost:8080/api/todo -H "Content-Type: application/json" -d "{\"description\":\"Take the dog and the cat for a walk\", \"id\":\"f4f26f1e-67dd-49d0-9f2b-8bac5be990a1\"}" 
+
+### mark todo as done
+curl -i -X PATCH http://localhost:8080/api/todo/f4f26f1e-67dd-49d0-9f2b-8bac5be990a1
+
+### delete todo
+curl -i -X DELETE http://localhost:8080/api/todo/f4f26f1e-67dd-49d0-9f2b-8bac5be990a1

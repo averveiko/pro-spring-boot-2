@@ -13,14 +13,14 @@ import java.util.stream.Collectors;
 @Repository
 public class ToDoRepository implements CommonRepository<ToDo> {
 
-    private Map<String, ToDo> toDos = new HashMap<>();
+    private final Map<String, ToDo> toDos = new HashMap<>();
 
     @Override
     public ToDo save(ToDo domain) {
         ToDo result = toDos.get(domain.getId());
         if (result != null) {
             result.setModified(LocalDateTime.now());
-            result.setDescriptions(domain.getDescriptions());
+            result.setDescription(domain.getDescription());
             result.setCompleted(domain.getCompleted());
             domain = result;
         }
@@ -53,9 +53,6 @@ public class ToDoRepository implements CommonRepository<ToDo> {
                 .collect(Collectors.toList());
     }
 
-    private Comparator<Map.Entry<String,ToDo>> entryComparator =
-            (Map.Entry<String, ToDo> o1, Map.Entry<String, ToDo> o2) -> {
-                return o1.getValue().getCreated().compareTo
-                        (o2.getValue().getCreated());
-            };
+    private final Comparator<Map.Entry<String,ToDo>> entryComparator =
+            Comparator.comparing((Map.Entry<String, ToDo> o) -> o.getValue().getCreated());
 }

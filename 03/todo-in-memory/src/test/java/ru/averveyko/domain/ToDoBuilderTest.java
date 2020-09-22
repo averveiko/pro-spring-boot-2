@@ -13,7 +13,7 @@ class ToDoBuilderTest {
                 .withId("234")
                 .build();
 
-        assertEquals("someDescription", toDo.getDescriptions()  );
+        assertEquals("someDescription", toDo.getDescription()  );
         assertEquals("234", toDo.getId()  );
     }
 
@@ -23,7 +23,7 @@ class ToDoBuilderTest {
                 .withDescription("someDescription")
                 .build();
 
-        assertEquals("someDescription", toDo.getDescriptions()  );
+        assertEquals("someDescription", toDo.getDescription()  );
         assertNotNull(toDo.getId());
     }
 

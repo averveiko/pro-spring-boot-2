@@ -15,7 +15,7 @@ public class ToDo {
 
     @NotNull
     @NotBlank
-    private String descriptions;
+    private String description;
 
     private LocalDateTime created;
 
@@ -30,8 +30,8 @@ public class ToDo {
         this.modified = date;
     }
 
-    public ToDo(@NotNull @NotBlank String descriptions) {
+    public ToDo(String description) {
         this();
-        this.descriptions = descriptions;
+        this.description = description;
     }
 }
