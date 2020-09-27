@@ -11,3 +11,6 @@ curl -i -X PATCH http://localhost:8080/api/todo/f4f26f1e-67dd-49d0-9f2b-8bac5be9
 
 ### delete todo
 curl -i -X DELETE http://localhost:8080/api/todo/f4f26f1e-67dd-49d0-9f2b-8bac5be990a1
+
+# Полезные ссылки:
+Spring Data JDBC (новая фича 2018 года, Spring Data без JPA) https://habr.com/ru/post/423697/
